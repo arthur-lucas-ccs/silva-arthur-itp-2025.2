@@ -2,6 +2,7 @@
 
 int main()
 {
+    // definição e entrada dos dados
     float consumo, valor;
     char tipo;
 
@@ -11,6 +12,7 @@ int main()
     printf("Digite o tipo de consumidor (R, C ou I): ");
     scanf(" %c", &tipo);
 
+    // Classificação e processamento
     switch (tipo)
     {
     case 'R':
@@ -30,6 +32,7 @@ int main()
         return 1;
     }
 
+    // saida
     printf("Valor total da conta: R$ %.2f\n", valor);
 
     return 0;

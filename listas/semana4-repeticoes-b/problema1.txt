@@ -1,0 +1,10 @@
+Primeiramente entramos no for incial, ligado a variavel I, após isso
+entramos em outro for, correspondente a variavel J, que por sua vez imprime 
+J na tela, do J sendo 0 até J sendo menor que 4, após isso há uma quebra de linha, esse
+processo vai se repetir enquanto i for menor que 5 com i iniciando em 0 e incrementando de 1 em um,
+a saida final seria:
+0123
+0123
+0123
+0123
+0123

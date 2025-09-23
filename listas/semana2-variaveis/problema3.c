@@ -3,8 +3,10 @@
 
 int main()
 {
+    // definição de variaveis
     float capital, taxa, tempo, montante;
 
+    // entrada
     printf("Digite o capital inicial: ");
     scanf("%f", &capital);
 
@@ -14,8 +16,10 @@ int main()
     printf("Digite o tempo em anos: ");
     scanf("%f", &tempo);
 
+    // processamento
     montante = capital * pow(1 + taxa / 100, tempo);
 
+    // saida
     printf("Montante final: R$ %.2f\n", montante);
 
     return 0;

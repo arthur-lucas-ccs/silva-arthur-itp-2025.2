@@ -3,12 +3,13 @@
 
 int main()
 {
+    // definição de variaveis e entrada
     float a, b, c, temp;
 
     printf("Digite os três lados do triângulo: ");
     scanf("%f %f %f", &a, &b, &c);
 
-    // Ordenar os lados (a será o maior)
+    // Ordenação dos lados
     if (a < b)
     {
         temp = a;
@@ -28,7 +29,7 @@ int main()
         c = temp;
     }
 
-    // Verificar se pode formar triângulo
+    // Verificação se um triangulo pode ser formado
     if (a >= b + c)
     {
         printf("Não pode formar um triângulo!\n");
@@ -37,7 +38,7 @@ int main()
 
     printf("Pode formar um triângulo: ");
 
-    // Classificação quanto aos lados
+    // Classificação de triangulos
     if (a == b && b == c)
     {
         printf("Equilátero ");
@@ -56,7 +57,7 @@ int main()
     float b2c2 = b * b + c * c;
 
     if (fabs(a2 - b2c2) < 0.001)
-    { // Usando tolerância para comparação de floats
+    {
         printf("Retângulo\n");
     }
     else if (a2 < b2c2)

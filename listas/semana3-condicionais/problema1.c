@@ -2,6 +2,7 @@
 
 int main()
 {
+    // definição de variaveis e entrada
     float peso, altura, imc;
 
     printf("Digite o peso em kg: ");
@@ -10,10 +11,12 @@ int main()
     printf("Digite a altura em metros: ");
     scanf("%f", &altura);
 
+    // processamento
     imc = peso / (altura * altura);
 
     printf("Seu IMC é: %.2f - ", imc);
 
+    // classificação e saida
     if (imc < 18.5)
     {
         printf("Abaixo do peso\n");

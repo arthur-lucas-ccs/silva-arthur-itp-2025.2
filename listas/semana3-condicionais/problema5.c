@@ -2,12 +2,14 @@
 
 int main()
 {
+    // definição e entrada
     float valorCompra, desconto, valorFinal;
     int porcentagem;
 
     printf("Digite o valor da compra: R$ ");
     scanf("%f", &valorCompra);
 
+    // classificação de acordo com o valor da venda
     if (valorCompra <= 100.00)
     {
         porcentagem = 0;
@@ -25,9 +27,11 @@ int main()
         porcentagem = 20;
     }
 
+    // processamento das dados
     desconto = valorCompra * porcentagem / 100;
     valorFinal = valorCompra - desconto;
 
+    // saida
     printf("Valor da compra: R$ %.2f\n", valorCompra);
     printf("Desconto aplicado: %d%%\n", porcentagem);
     printf("Valor do desconto: R$ %.2f\n", desconto);

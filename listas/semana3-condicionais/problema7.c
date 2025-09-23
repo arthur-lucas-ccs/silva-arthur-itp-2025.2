@@ -3,6 +3,7 @@
 
 int main()
 {
+    // definição e entrada dos dados
     float a, b, c, delta, x1, x2;
 
     printf("Digite o coeficiente a: ");
@@ -14,12 +15,14 @@ int main()
     printf("Digite o coeficiente c: ");
     scanf("%f", &c);
 
+    // exclusão de equações de segundo grau invalidas
     if (a == 0)
     {
         printf("Não é uma equação do segundo grau!\n");
         return 1;
     }
 
+    // processamento e saida dos dados
     delta = b * b - 4 * a * c;
 
     printf("Delta = %.2f\n", delta);

@@ -1,0 +1,8 @@
+Após o usuario atribuir um valor correspondente a variavel n, entramos no primeiro for
+onde entramos em outro for que imprime a na tela j, isso vai se repetir enquanto j for menor ou igual a i
+enquanto j for menor ou igual a i, após isso voltamos ao escopo do primeiro for, que por sua vez
+quebra a linha na saída, esse processo irá se repetir equanto i for menor ou igual a n.
+exemplo de saida com n = 3
+1
+1 2
+1 2 3

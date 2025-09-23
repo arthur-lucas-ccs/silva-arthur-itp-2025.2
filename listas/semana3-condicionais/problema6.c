@@ -2,6 +2,7 @@
 
 int main()
 {
+    // definição e entrada dos dados
     char febre, dorCabeca, dorCorpo, tosse;
 
     printf("Tem febre? (S/N): ");
@@ -26,6 +27,7 @@ int main()
     if (tosse >= 'a')
         tosse -= 32;
 
+    // classificação das possiveis doenças
     if (febre == 'S' && dorCabeca == 'S' && dorCorpo == 'S')
     {
         printf("Possível gripe\n");

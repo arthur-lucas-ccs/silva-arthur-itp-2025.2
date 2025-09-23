@@ -2,6 +2,7 @@
 
 int main()
 {
+    // definição e entrada
     float nota1, nota2, nota3, media, notaFinal;
 
     printf("Digite a primeira nota: ");
@@ -13,10 +14,12 @@ int main()
     printf("Digite a terceira nota: ");
     scanf("%f", &nota3);
 
+    // processamento da media
     media = (nota1 + nota2 + nota3) / 3;
 
     printf("Média: %.2f - ", media);
 
+    // classificação do estado do aluno e saida
     if (media >= 7.0)
     {
         printf("Aprovado!\n");

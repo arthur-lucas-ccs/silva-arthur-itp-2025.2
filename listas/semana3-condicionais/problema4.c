@@ -2,6 +2,7 @@
 
 int main()
 {
+    // definição e entrada
     char jogador1, jogador2;
 
     printf("Jogador 1 - Digite P (pedra), A (papel) ou T (tesoura): ");
@@ -10,6 +11,7 @@ int main()
     printf("Jogador 2 - Digite P (pedra), A (papel) ou T (tesoura): ");
     scanf(" %c", &jogador2);
 
+    // processamento dos dados e saida
     if (jogador1 == jogador2)
     {
         printf("Empate!\n");
