@@ -1,0 +1,10 @@
+Após o usuario atribuir um valor a n, entramos em um laço de repetição
+associado a variavel i, e dentro desse laço entramos em outro laço que por sua 
+vez está associado a j, dentro dele é exibido o atual valor de i mais o valor de j,
+esse processo é repetido enquanto j for menor ou igual a n, após essa condição não ser mais
+satisfeita, voltamos a o primeiro laço, que por sua vez vai repetir o processo enquanto 
+i for menor ou igual a n.
+Exemplo: n = 3.
+2 3 4 
+3 4 5 
+4 5 6 

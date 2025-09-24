@@ -1,0 +1,11 @@
+Assim como a questão passada existem dois laços de repetição que são dependentes
+da variavel n, mas dessa vez, apos a entrada de n, temos um for ligado a uma 
+variavel i que por sua vez dentro dela tem outro for, dependente da variavel j 
+que é inicializada com o valor de i e ela imprime na tela o valor de j, enquanto 
+j for maior ou igual a 1, e a cada entrada é diminuido 1 do seu valor, após sair desse for
+voltamos ao escopo do for ligado a i, que por sua vez imprime uma quebra de linha, todo 
+esse processo é repetido enquanto i for menor que n.
+Exemplo: n = 3
+1
+2 1 
+3 2 1
