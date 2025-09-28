@@ -39,7 +39,7 @@ int binarioParaDecimal(bool binario[])
 bool verificaGanho(bool binario[])
 {
     int decimal = binarioParaDecimal(binario);
-    if (decimal & 7 == 7 || decimal & 56 == 56 || decimal & 448 == 448)
+    if (decimal & 7 == 7 || decimal & 56 == 56 || decimal & 448 == 448 || decimal & 73 == 73 || decimal & 146 == 146 || decimal & 296 == 296 || decimal & 84 == 84 || decimal & 273 == 273)
     {
         return 1;
     }
@@ -50,8 +50,8 @@ int main()
 {
     bool tabuleiro[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
     set_posicao(tabuleiro, 0);
-    set_posicao(tabuleiro, 1);
-    set_posicao(tabuleiro, 2);
+    set_posicao(tabuleiro, 4);
+    set_posicao(tabuleiro, 8);
     set_posicao(tabuleiro, 6);
     get_tabuleiro(tabuleiro);
     printf("\n%d\n", binarioParaDecimal(tabuleiro));
