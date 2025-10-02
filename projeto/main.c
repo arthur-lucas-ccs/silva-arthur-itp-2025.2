@@ -87,7 +87,7 @@ bool verificaVazios(valores binario[])
     {
         if (binario[i] == -1)
         {
-            return false; // encontrou um espaço
+            return false; // encontrou um espaço (trocar)
         }
     }
     return true;
@@ -124,7 +124,7 @@ bool *possiveisJogadas(valores *original, size_t tamanho)
     return jogadas;
 }
 
-int minimax(valores *tabuleiro, valores jogador, valores eu) // jogador é do momento, eu é a posição do max
+int minimax(valores *tabuleiro, valores jogador, valores eu) // jogador é do momento, eu é  posição do max
 
 {
 
@@ -218,7 +218,6 @@ int main()
     char resposta;
     printf("Se Voce quer ser X, digite: 'x', se quiser jogar com O, digite: 'o'.\n");
     scanf(" %c", &resposta);
-    printf("%c", resposta);
     valores eu = (resposta == 'x') ? JOGADOR_X : JOGADOR_O;
     valores ia = (eu == JOGADOR_X) ? JOGADOR_O : JOGADOR_X;
 
@@ -238,5 +237,8 @@ int main()
             set_posicao(tabuleiro, melhorJogada(tabuleiro, ia), ia);
         }
     }
+    printf("Acabou e esse foi o tabuleiro");
+    get_tabuleiro(tabuleiro);
+
     return 0;
 }
