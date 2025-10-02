@@ -22,7 +22,14 @@ valores *criarVetorBase(size_t tamanho)
 
 void set_posicao(valores binario[], int posicao, valores jogador)
 {
-    binario[posicao] = jogador;
+    if (binario[posicao] == -1)
+    {
+        binario[posicao] = jogador;
+    }
+    else
+    {
+        printf("Espaco ocupado ou invalido.\n");
+    }
 }
 
 void get_tabuleiro(valores *binario)
@@ -117,7 +124,7 @@ bool *possiveisJogadas(valores *original, size_t tamanho)
     return jogadas;
 }
 
-int minimax(valores *tabuleiro, valores jogador, valores eu) // jogador é do momento
+int minimax(valores *tabuleiro, valores jogador, valores eu) // jogador é do momento, eu é a posição do max
 
 {
 
@@ -125,7 +132,7 @@ int minimax(valores *tabuleiro, valores jogador, valores eu) // jogador é do mo
     {
         return 1;
     }
-    if (verificaGanho(tabuleiro, jogador) == 1)
+    else if (verificaGanho(tabuleiro, jogador) == 1)
     {
         return -1;
     }
@@ -139,40 +146,42 @@ int minimax(valores *tabuleiro, valores jogador, valores eu) // jogador é do mo
 
     if (jogador == eu)
     {
+        int valor;
         int maior = -10000;
         for (size_t i = 0; i < tamanho; i++)
         {
             if (jogadas[i] == 1)
             {
                 valores *resultado = jogada(tabuleiro, i, eu, tamanho);
-                int valor = minimax(resultado, (eu == JOGADOR_X) ? eu == JOGADOR_O : eu == JOGADOR_X, eu);
+                valor = minimax(resultado, (eu == JOGADOR_X) ? JOGADOR_O : JOGADOR_X, eu);
                 free(resultado);
                 if (valor > maior)
                 {
                     maior = valor;
+                    printf("valor que foi atualizado: %d\n", valor);
                 }
             }
         }
-        free(jogadas);
         return maior;
     }
     else
     {
-        int maior = 10000;
+        int valor;
+        int maior = +10000;
         for (size_t i = 0; i < tamanho; i++)
         {
             if (jogadas[i] == 1)
             {
                 valores *resultado = jogada(tabuleiro, i, jogador, tamanho);
-                int valor = minimax(resultado, (eu == JOGADOR_X) ? eu == JOGADOR_O : eu == JOGADOR_X, eu);
+                valor = minimax(resultado, (eu == JOGADOR_X) ? JOGADOR_O : JOGADOR_X, eu);
                 free(resultado);
                 if (valor < maior)
                 {
                     maior = valor;
+                    printf("valor que foi atualizado: %d\n", valor);
                 }
             }
         }
-        free(jogadas);
         return maior;
     }
 }
@@ -183,51 +192,51 @@ int melhorJogada(valores *tabuleiro, valores eu)
     bool *jogadas = possiveisJogadas(tabuleiro, tamanho);
     int maior = -1000000;
     int melhor = 0;
-    for (size_t i = 0; i < tamanho; i++)
+    int valormelhor;
+    for (size_t j = 0; j < tamanho; j++)
     {
-        printf("possivel jogada: %d\n", jogadas[i]);
-        if (jogadas[i] == 1)
+        if (jogadas[j] == 1)
         {
-            valores *resultado = jogada(tabuleiro, i, eu, tamanho);
-            int valor = minimax(resultado, (eu == JOGADOR_X) ? eu == JOGADOR_O : eu == JOGADOR_X, eu);
-            printf("i = %d\n", i);
-            printf("valor: %d\n", valor);
-            printf("decimal: %d\n", binarioParaDecimal(resultado, eu));
-            printf("verifica: %d\n", verificaGanho(resultado, eu));
-            printf("eu: %d\n", eu);
-            free(resultado);
-            if (valor > maior)
+            valores *resultado = jogada(tabuleiro, j, eu, tamanho);
+            valormelhor = minimax(resultado, (eu == JOGADOR_X) ? JOGADOR_O : JOGADOR_X, eu);
+            if (valormelhor > maior)
             {
-                melhor = i;
-                maior = valor;
+                melhor = j;
+                maior = valormelhor;
             }
         }
     }
-    printf("ultimo i: %d", melhor);
-    free(jogadas);
+    printf("ultimo j: %d\n", melhor);
     return melhor;
 }
-
-/*
-void copiaVetor(valores vetorC[], valores vetorV[])
-{
-    for (int i = 0; i < 9; i++)
-    {
-        vetorV[i] = vetorC[i];
-    }
-}*/
 
 int main()
 {
     size_t posicoes = 9;
     valores *tabuleiro = criarVetorBase(posicoes);
-    set_posicao(tabuleiro, 0, JOGADOR_O);
-    set_posicao(tabuleiro, 2, JOGADOR_X);
-    set_posicao(tabuleiro, 8, JOGADOR_X);
-    set_posicao(tabuleiro, 7, JOGADOR_O);
+    int posicao;
+    char resposta;
+    printf("Se Voce quer ser X, digite: 'x', se quiser jogar com O, digite: 'o'.\n");
+    scanf(" %c", &resposta);
+    printf("%c", resposta);
+    valores eu = (resposta == 'x') ? JOGADOR_X : JOGADOR_O;
+    valores ia = (eu == JOGADOR_X) ? JOGADOR_O : JOGADOR_X;
 
-    bool *possiveis = possiveisJogadas(tabuleiro, posicoes);
-    printf("minimax jogada X:%d\n", melhorJogada(tabuleiro, JOGADOR_X));
-    get_tabuleiro(tabuleiro);
+    while ((verificaGanho(tabuleiro, eu)) != 1 && (verificaGanho(tabuleiro, (eu == JOGADOR_X) ? JOGADOR_O : JOGADOR_X) != 1) && (verificaVazios(tabuleiro) == false))
+    {
+        printf("0 Para ver a posicao, e 1 para fazer uma jogada\n");
+        scanf(" %c", &resposta);
+        if (resposta == '0')
+        {
+            get_tabuleiro(tabuleiro);
+        }
+        else if (resposta == '1')
+        {
+            printf("Digite a posicao de 1 a 9: \n");
+            scanf("%d", &posicao);
+            set_posicao(tabuleiro, posicao, eu);
+            set_posicao(tabuleiro, melhorJogada(tabuleiro, ia), ia);
+        }
+    }
     return 0;
 }
