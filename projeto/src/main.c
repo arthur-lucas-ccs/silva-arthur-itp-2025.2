@@ -259,7 +259,6 @@ int main()
             do
             {
                 printf("Digite a posicao de 1 a 9: \n");
-                printf("porra");
                 scanf("%d", &posicao);
                 validacao = setPosicao(tabuleiro, posicao - 1, eu);
                 if (validacao == false)
