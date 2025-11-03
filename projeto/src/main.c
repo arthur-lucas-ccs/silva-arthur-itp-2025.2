@@ -66,7 +66,7 @@ void getTabuleiro(valores *tabuleiro)
 /*retorna um numero inteiro, de acordo com o tabuleiro de "binarios" de acordo com um certo ponto de vista,
 falo sobre binarios, pois se tivermos um ponto de vista, podemos dizer se uma posição está preenchida com o valor
 que estamos analisando ou se não está, ai nesse caso fazemos nesse tabuleiro a transformação de binario para decimal*/
-int valoresParaDecimal(valores tabuleiro[], valores jogada)
+int valoresParaDecimal(valores *tabuleiro, valores jogada)
 {
     int aux = 0;
     for (int i = 0; i < 9; i++)
@@ -80,7 +80,7 @@ int valoresParaDecimal(valores tabuleiro[], valores jogada)
 }
 
 // verifica as possiveis vitorias, de acordo com o decimal.
-bool verificaGanho(valores tabuleiro[], valores jogada)
+bool verificaGanho(valores *tabuleiro, valores jogada)
 {
     int decimal = valoresParaDecimal(tabuleiro, jogada);
     if ((decimal & 7) == 7 || (decimal & 56) == 56 || (decimal & 448) == 448 || (decimal & 73) == 73 || (decimal & 146) == 146 || (decimal & 296) == 296 || (decimal & 84) == 84 || (decimal & 273) == 273)
@@ -142,16 +142,19 @@ bool *possiveisJogadas(valores *original, size_t tamanho)
 int minimax(valores *tabuleiro, valores jogador, valores eu) // jogador é quem vai fazer a jogada, enquanto eu é o ponto de vista que buscamos
 {
     // condições de parada do minimax
-    if (verificaGanho(tabuleiro, eu) == 1)
+    if (verificaGanho(tabuleiro, jogador) == 1 && jogador == eu)
     {
+        printf("\npossivel ganho\n");
         return 1;
     }
-    else if (verificaGanho(tabuleiro, jogador) == 1)
+    else if (verificaGanho(tabuleiro, jogador) == 1 && jogador != eu)
     {
+        printf("\npossivel perca\n");
         return -1;
     }
     else if (temVazios(tabuleiro) == false)
     {
+        printf("\npossivel empate\n");
         return 0;
     }
 
@@ -175,6 +178,7 @@ int minimax(valores *tabuleiro, valores jogador, valores eu) // jogador é quem 
                 if (valor > maior) // o valor do minimax é a melhor posição
                 {
                     maior = valor;
+                    printf("esse eh o maior da jogada i: %d\n e esse eh o valor: %d\n", i, valor);
                 }
             }
         }
@@ -189,11 +193,12 @@ int minimax(valores *tabuleiro, valores jogador, valores eu) // jogador é quem 
             if (jogadas[i] == 1)
             {
                 valores *resultado = jogada(tabuleiro, i, jogador, tamanho);
-                valor = minimax(resultado, (eu == JOGADOR_X) ? JOGADOR_O : JOGADOR_X, eu);
+                valor = minimax(resultado, eu, (eu == JOGADOR_X) ? JOGADOR_O : JOGADOR_X);
                 free(resultado);
                 if (valor < menor)
                 {
                     menor = valor;
+                    printf("esse eh o menor valor da jogada i: %d\n e esse eh o valor: %d\n", i, valor);
                 }
             }
         }
@@ -206,7 +211,7 @@ int melhorJogada(valores *tabuleiro, valores eu)
 {
     size_t tamanho = 9;
     bool *jogadas = possiveisJogadas(tabuleiro, tamanho);
-    int maiorJogada = -1000000;
+    int maiorJogada = 1000000;
     int melhor = 0;
     int melhorValor;
     for (size_t j = 0; j < tamanho; j++)
@@ -214,8 +219,8 @@ int melhorJogada(valores *tabuleiro, valores eu)
         if (jogadas[j] == 1)
         {
             valores *resultado = jogada(tabuleiro, j, eu, tamanho);
-            melhorValor = minimax(resultado, (eu == JOGADOR_X) ? JOGADOR_O : JOGADOR_X, eu);
-            if (melhorValor > maiorJogada)
+            melhorValor = minimax(resultado, (eu == JOGADOR_X) ? JOGADOR_O : JOGADOR_X, (eu == JOGADOR_X) ? JOGADOR_O : JOGADOR_X);
+            if (melhorValor < maiorJogada)
             {
                 melhor = j;
                 maiorJogada = melhorValor;
@@ -254,6 +259,7 @@ int main()
             do
             {
                 printf("Digite a posicao de 1 a 9: \n");
+                printf("porra");
                 scanf("%d", &posicao);
                 validacao = setPosicao(tabuleiro, posicao - 1, eu);
                 if (validacao == false)
