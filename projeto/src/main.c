@@ -142,17 +142,17 @@ bool *possiveisJogadas(valores *original, size_t tamanho)
 int minimax(valores *tabuleiro, valores jogador, valores eu) // jogador é quem vai fazer a jogada, enquanto eu é o ponto de vista que buscamos
 {
     // condições de parada do minimax
-    if (verificaGanho(tabuleiro, jogador) == 1 && jogador == eu)
+    if (verificaGanho(tabuleiro, eu))
     {
         printf("\npossivel ganho\n");
         return 1;
     }
-    else if (verificaGanho(tabuleiro, jogador) == 1 && jogador != eu)
+    else if (verificaGanho(tabuleiro, (eu == JOGADOR_X) ? JOGADOR_O : JOGADOR_X))
     {
         printf("\npossivel perca\n");
         return -1;
     }
-    else if (temVazios(tabuleiro) == false)
+    else if (!temVazios(tabuleiro))
     {
         printf("\npossivel empate\n");
         return 0;
@@ -169,8 +169,13 @@ int minimax(valores *tabuleiro, valores jogador, valores eu) // jogador é quem 
         int maior = -10000;
         for (size_t i = 0; i < tamanho; i++)
         {
+            if (i == 0)
+            {
+                //   printf("-----------------------------------------------------\n");
+            }
             if (jogadas[i] == 1)
             {
+                printf("Jogada da ia na posicao %d\n", i);
                 // percorremos as possiveis jogadas, aplicando o minimax nos tabuleiros resultantes
                 valores *resultado = jogada(tabuleiro, i, eu, tamanho);
                 valor = minimax(resultado, (eu == JOGADOR_X) ? JOGADOR_O : JOGADOR_X, eu);
@@ -178,8 +183,12 @@ int minimax(valores *tabuleiro, valores jogador, valores eu) // jogador é quem 
                 if (valor > maior) // o valor do minimax é a melhor posição
                 {
                     maior = valor;
-                    printf("esse eh o maior da jogada i: %d\n e esse eh o valor: %d\n", i, valor);
+                    // printf("esse eh o maior da jogada i: %d\n e esse eh o valor: %d\n", i, valor);
                 }
+            }
+            if (i == 0)
+            {
+                //   printf("-----------------------------------------------------\n");
             }
         }
         return maior;
@@ -192,13 +201,14 @@ int minimax(valores *tabuleiro, valores jogador, valores eu) // jogador é quem 
         {
             if (jogadas[i] == 1)
             {
+                printf("Suposta Jogada Do Humano na posicao %d\n", i);
                 valores *resultado = jogada(tabuleiro, i, jogador, tamanho);
-                valor = minimax(resultado, eu, (eu == JOGADOR_X) ? JOGADOR_O : JOGADOR_X);
+                valor = minimax(resultado, eu, eu);
                 free(resultado);
                 if (valor < menor)
                 {
                     menor = valor;
-                    printf("esse eh o menor valor da jogada i: %d\n e esse eh o valor: %d\n", i, valor);
+                    // printf("esse eh o menor valor da jogada i: %d\n e esse eh o valor: %d\n", i, valor);
                 }
             }
         }
@@ -211,19 +221,21 @@ int melhorJogada(valores *tabuleiro, valores eu)
 {
     size_t tamanho = 9;
     bool *jogadas = possiveisJogadas(tabuleiro, tamanho);
-    int maiorJogada = 1000000;
-    int melhor = 0;
-    int melhorValor;
+    int maiorJogada = -1000000;
+    int melhor;
     for (size_t j = 0; j < tamanho; j++)
     {
         if (jogadas[j] == 1)
         {
             valores *resultado = jogada(tabuleiro, j, eu, tamanho);
-            melhorValor = minimax(resultado, (eu == JOGADOR_X) ? JOGADOR_O : JOGADOR_X, (eu == JOGADOR_X) ? JOGADOR_O : JOGADOR_X);
-            if (melhorValor < maiorJogada)
+            int melhorValor = minimax(resultado, (eu == JOGADOR_X) ? JOGADOR_O : JOGADOR_X, eu);
+            if (melhorValor > maiorJogada)
             {
                 melhor = j;
                 maiorJogada = melhorValor;
+                printf("|||||||||||||||||||||||||||||||||||||||||||||||||||||||\n");
+                getTabuleiro(tabuleiro);
+                printf("|||||||||||||||||||||||||||||||||||||||||||||||||||||||\n");
             }
         }
     }
@@ -256,20 +268,18 @@ int main()
         else if (resposta == '1')
         {
             bool validacao;
-            do
+            printf("Digite a posicao de 1 a 9: \n");
+            scanf("%d", &posicao);
+            validacao = setPosicao(tabuleiro, posicao - 1, eu);
+            while (validacao == false)
             {
+                printf("Espaco ocupado ou invalido.\n");
                 printf("Digite a posicao de 1 a 9: \n");
                 scanf("%d", &posicao);
                 validacao = setPosicao(tabuleiro, posicao - 1, eu);
-                if (validacao == false)
-                {
-                    printf("Espaco ocupado ou invalido.\n");
-                }
-                if (verificaGanho(tabuleiro, eu) != 1)
-                {
-                    validacao = setPosicao(tabuleiro, melhorJogada(tabuleiro, ia), ia);
-                }
-            } while (validacao != true);
+            }
+            setPosicao(tabuleiro, melhorJogada(tabuleiro, ia), ia);
+            printf("oiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii\n");
         }
     }
 
