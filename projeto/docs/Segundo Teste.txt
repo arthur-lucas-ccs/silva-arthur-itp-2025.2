@@ -1,0 +1,86 @@
+# 0 replace_malloc                 [D:\a\drmemory\drmemory\common\alloc_replace.c:2580]
+# 1 possiveisJogadas
+# 2 minimax         
+# 3 minimax         
+# 4 minimax         
+# 5 minimax         
+# 6 minimax         
+# 7 minimax         
+# 8 minimax         
+# 9 melhorJogada    
+#10 main            
+
+Error #4: LEAK 9 direct bytes 0x015301e0-0x015301e9 + 0 indirect bytes
+# 0 replace_malloc                 [D:\a\drmemory\drmemory\common\alloc_replace.c:2580]
+# 1 possiveisJogadas
+# 2 minimax         
+# 3 minimax         
+# 4 minimax         
+# 5 minimax         
+# 6 minimax         
+# 7 melhorJogada    
+# 8 main            
+
+Error #5: LEAK 9 direct bytes 0x01530288-0x01530291 + 0 indirect bytes
+# 0 replace_malloc                 [D:\a\drmemory\drmemory\common\alloc_replace.c:2580]
+# 1 possiveisJogadas
+# 2 minimax         
+# 3 minimax         
+# 4 minimax         
+# 5 melhorJogada    
+# 6 main            
+
+Error #6: LEAK 36 direct bytes 0x01530ef0-0x01530f14 + 0 indirect bytes
+# 0 replace_malloc               [D:\a\drmemory\drmemory\common\alloc_replace.c:2580]
+# 1 criarVetorBase  
+# 2 main            
+
+Error #7: LEAK 9 direct bytes 0x01530f38-0x01530f41 + 0 indirect bytes
+# 0 replace_malloc                 [D:\a\drmemory\drmemory\common\alloc_replace.c:2580]
+# 1 possiveisJogadas
+# 2 melhorJogada    
+# 3 main            
+
+Error #8: LEAK 36 direct bytes 0x01530f68-0x01530f8c + 0 indirect bytes
+# 0 replace_malloc               [D:\a\drmemory\drmemory\common\alloc_replace.c:2580]
+# 1 copiarVetor     
+# 2 jogada          
+# 3 melhorJogada    
+# 4 main            
+
+Error #9: LEAK 9 direct bytes 0x01530fb0-0x01530fb9 + 0 indirect bytes
+# 0 replace_malloc                 [D:\a\drmemory\drmemory\common\alloc_replace.c:2580]
+# 1 possiveisJogadas
+# 2 minimax         
+# 3 melhorJogada    
+# 4 main            
+
+Reached maximum leak report limit (-report_leak_max). No further leaks will be reported.
+
+===========================================================================
+FINAL SUMMARY:
+
+DUPLICATE ERROR COUNTS:
+	Error #   1:      5
+	Error #   3:   7072
+	Error #   4:   2733
+	Error #   5:    178
+	Error #   8:      4
+	Error #   9:      5
+
+SUPPRESSIONS USED:
+
+ERRORS FOUND:
+      0 unique,     0 total unaddressable access(es)
+      2 unique,     6 total uninitialized access(es)
+      0 unique,     0 total invalid heap argument(s)
+      0 unique,     0 total GDI usage error(s)
+      0 unique,     0 total handle leak(s)
+      0 unique,     0 total warning(s)
+      7 unique,  9994 total,  90081 byte(s) of leak(s)
+      0 unique,     0 total,      0 byte(s) of possible leak(s)
+ERRORS IGNORED:
+      6 unique,     6 total,    596 byte(s) of still-reachable allocation(s)
+         (re-run with "-show_reachable" for details)
+  11037 leak(s) beyond -report_leak_max
+Details: C:\Users\Arthur\AppData\Roaming\Dr. Memory\DrMemory-meu_programa.exe.23108.000\results.txt

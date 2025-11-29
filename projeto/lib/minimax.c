@@ -73,6 +73,7 @@ int minimax(valores *tabuleiro, valores jogador, valores eu) // jogador é quem 
                 //   printf("-----------------------------------------------------\n");
             }
         }
+        free(jogadas);
         return maior;
     }
     else // posição onde buscamos minimizar, nesse caso será praticamente a mesma coisa do maximizar, porém buscamos minimizar invertendo o maior para menor.
@@ -93,6 +94,7 @@ int minimax(valores *tabuleiro, valores jogador, valores eu) // jogador é quem 
                 }
             }
         }
+        free(jogadas);
         return menor;
     }
 }
@@ -110,6 +112,7 @@ int melhorJogada(valores *tabuleiro, valores eu)
         {
             valores *resultado = jogada(tabuleiro, j, eu, tamanho);
             int melhorValor = minimax(resultado, (eu == JOGADOR_X) ? JOGADOR_O : JOGADOR_X, eu);
+            free(resultado);
             if (melhorValor > maiorJogada)
             {
                 melhor = j;
@@ -117,5 +120,6 @@ int melhorJogada(valores *tabuleiro, valores eu)
             }
         }
     }
+    free(jogadas);
     return melhor;
 }

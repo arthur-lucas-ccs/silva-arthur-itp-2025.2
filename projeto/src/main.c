@@ -11,7 +11,7 @@ int main()
     // o usuario escolhe quem quer ser e com base nisso definimos o valor da IA.
     int posicao;
     char resposta;
-    print("Se Voce quer ser X, digite: 'x', se quiser jogar com O, digite: 'o'.\n");
+    print("Se Voce quer ser X, digite: 'x', se quiser jogar com O, digite: 'o'.");
     scanf(" %c", &resposta);
     valores eu = (resposta == 'x') ? JOGADOR_X : JOGADOR_O;
     valores ia = (eu == JOGADOR_X) ? JOGADOR_O : JOGADOR_X;
@@ -61,6 +61,8 @@ int main()
 
     print("Acabou e esse foi o tabuleiro");
     getTabuleiro(tabuleiro);
+
+    free(tabuleiro);
 
     // encerra a função main.
     return 0;
