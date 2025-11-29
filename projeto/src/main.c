@@ -11,6 +11,8 @@ int main()
     // o usuario escolhe quem quer ser e com base nisso definimos o valor da IA.
     int posicao;
     char resposta;
+    int historico[3][9];
+    int turno = 1;
     print("Se Voce quer ser X, digite: 'x', se quiser jogar com O, digite: 'o'.");
     scanf(" %c", &resposta);
     valores eu = (resposta == 'x') ? JOGADOR_X : JOGADOR_O;
@@ -30,17 +32,20 @@ int main()
             bool validacao;
             print("Digite a posicao de 1 a 9: ");
             scanf("%d", &posicao);
-            validacao = setPosicao(tabuleiro, posicao - 1, eu);
+            validacao = setPosicao(historico, tabuleiro, posicao - 1, eu, turno);
+            turno++;
             while (validacao == false && temVazios(tabuleiro) == true)
             {
                 print("Espaco ocupado ou invalido.");
                 print("Digite a posicao de 1 a 9: ");
                 scanf("%d", &posicao);
-                validacao = setPosicao(tabuleiro, posicao - 1, eu);
+                validacao = setPosicao(historico, tabuleiro, posicao - 1, eu, turno);
+                turno++;
             }
             if (temVazios(tabuleiro) == true)
             {
-                setPosicao(tabuleiro, melhorJogada(tabuleiro, ia), ia);
+                setPosicao(historico, tabuleiro, melhorJogada(tabuleiro, ia), ia, turno);
+                turno++;
             }
         }
     }
@@ -60,6 +65,7 @@ int main()
     }
 
     print("Acabou e esse foi o tabuleiro");
+    getHistorico(historico);
     getTabuleiro(tabuleiro);
 
     free(tabuleiro);

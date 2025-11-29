@@ -22,8 +22,84 @@ valores *criarVetorBase(size_t tamanho)
     return vetor;
 }
 
+void setHistorico(int historico[3][9], int posicao, int jogador, int turno)
+{
+    if (turno == 1)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                historico[i][j] = 10;
+                historico[i][j] = 10;
+                historico[i][j] = 10;
+            }
+        }
+    }
+    int index = turno - 1;
+    historico[0][index] = posicao;
+    historico[1][index] = jogador;
+    historico[2][index] = turno;
+}
+
+void getHistorico(int historico[3][9])
+{
+    for (int i = 0; i < 3; i++)
+    {
+        if (i == 0)
+        {
+            printf("Posicao: ");
+        }
+        if (i == 1)
+        {
+            printf("Jogador: ");
+        }
+        if (i == 2)
+        {
+            printf("Turno: ");
+        }
+
+        for (int j = 0; j < 9; j++)
+        {
+            if (historico[i][j] != 10)
+            {
+                if (i != 1)
+                {
+                    printf("%d\t ", historico[i][j]);
+                }
+                else
+                {
+                    if (historico[i][j] == 1)
+                    {
+                        printf("%c\t ", 'O');
+                    }
+                    else if (historico[i][j] == 0)
+                    {
+                        printf("%c\t ", 'X');
+                    }
+                }
+            }
+        }
+        printf("\n");
+    }
+}
+
 // se houver um espaço livre, retorna 1 e preenche com o jogador.
-bool setPosicao(valores tabuleiro[], int posicao, valores jogador)
+bool setPosicao(int historico[3][9], valores tabuleiro[], int posicao, valores jogador, int turno)
+{
+    if (tabuleiro[posicao] == -1)
+    {
+        tabuleiro[posicao] = jogador;
+        setHistorico(historico, posicao, jogador, turno);
+        return true;
+    }
+    else if (tabuleiro[posicao] != -1)
+    {
+        return false;
+    }
+}
+
+bool setJogada(valores tabuleiro[], int posicao, valores jogador)
 {
     if (tabuleiro[posicao] == -1)
     {

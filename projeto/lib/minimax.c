@@ -5,7 +5,7 @@
 valores *jogada(valores *original, int posicao, valores jogador, size_t tamanho)
 {
     valores *novoTabuleiro = copiarVetor(original, tamanho);
-    setPosicao(novoTabuleiro, posicao, jogador);
+    setJogada(novoTabuleiro, posicao, jogador);
     return novoTabuleiro;
 }
 

@@ -18,7 +18,10 @@ typedef enum
 
 void print(char nome[]);
 valores *criarVetorBase(size_t tamanho);
-bool setPosicao(valores tabuleiro[], int posicao, valores jogador);
+void setHistorico(int historico[3][9], int posicao, int jogador, int turno);
+void getHistorico(int historico[3][9]);
+bool setPosicao(int historico[3][9], valores tabuleiro[], int posicao, valores jogador, int turno);
+bool setJogada(valores tabuleiro[], int posicao, valores jogador);
 void getTabuleiro(valores *tabuleiro);
 int valoresParaDecimal(valores *tabuleiro, valores jogada);
 bool verificaGanho(valores *tabuleiro, valores jogada);
