@@ -19,38 +19,19 @@
 - Estruturas de repetição: as principais utilidades das esturas de repetição no meu codigo, foi referente a ação de percorrer um vetor.
 - Vetores: Os vetores foram um dos principais pilares do codigo, pois ele representa a situação de um tabuleiro de jogo da velha.
 - Funções: Principais partes, pois com elas eu pude deixar meu main mais limpo, e me auxiliou na manutenção do codigo, e no codigo tem cerca de 11 funções de diferentes tipos e usabilidades, logo devido a quantidade, optei por deixar mais detalhado dentro do relatório a utilização de cada função.
+### Conceitos da U2 Aplicados: está bem explicado no relatório
 ## 📚 Listas de Exercícios
-### Semana 2 - Variáveis, Tipos e Operadores:
-- ✅ Problema 1: Calculadora de IMC
-- ✅ Problema 2: Conversão de temperatura
-- ✅ Problema 3: Cálculo de juros compostos
-- ✅ Problema 4: Operações aritméticas básicas
-### Semana 3 - Condicionais:
-- ✅ Problema 1: Classificação de IMC
-- ✅ Problema 2: Calculadora de energia elétrica
-- ✅ Problema 3: Sistema de notas
-- ✅ Problema 4: Pedra, papel, tesoura
-- ✅ Problema 5: Calculadora de desconto progressivo
-- ✅ Problema 6: Diagnóstico médico simples
-- ✅ Problema 7: Sistema de equações do 2º grau
-- ✅ Problema 8: Validador de triângulos
-### Semana 4A - Repetições:
-- ✅ Problema 1: Dobrar folha
-- ✅ Problema 2: Homem Aranha
-- ✅ Problema 3: Números colegas
-- ✅ Problema 4: Jogo de dardos
-### Semana 4B - Análise e Padrões:
-- ✅ Questões 1-4: Análise de código
-- ✅ Questões 5-11: Implementações
-### Semana 5 - Funções (Parte 1):
-- ✅ Problema 1: Horários das rondas
-- ✅ Problema 2: Primos triplos
-- ✅ Problema 3: Pousando a sonda espacial
-### Semana 6 - Vetores:
-- ✅ Problema 1: MEC - Correção ENEM
-- ✅ Problema 2: Álbum de figurinhas
-- ✅ Problema 3: A construção da ponte
-- ✅ Problema 4: Em busca do tesouro perdido
+### Semana 2 - Variáveis, Tipos e Operadores ✅
+### Semana 3 - Condicionais ✅
+### Semana 4A - Repetições ✅
+### Semana 4B - Análise e Padrões ✅
+### Semana 5 - Funções (Parte 1) ✅
+### Semana 6 - Vetores ✅
+### Semana 7 - Strings✅
+### Semana 8 - repeticoes aninhadas✅
+### Semana 9 - matrizes✅
+### Semana 10 - ponteiros alocacao✅
+
 ## 🎯 Principais Aprendizados
 -Ponteiros
 -Bitwise
@@ -60,3 +41,13 @@ Apesar de já ter usado C para desenvolvimento de sistemas embarcados, nunca tiv
 - **SO**: Windows 11
 - **Compilador**: GCC versão 6.3.0
 - **Editor**: VsCode
+## 🔧 Instruções de Compilação
+Estando na pasta de projeto, use esse comando para fazer a compilação:
+
+gcc -Iinclude src/main.c lib/manipulacaoTabuleiro.c lib/minimax.c -o meu_programa
+
+Observação: o programa utiliza a biblioteca windows disponibilizada pela microsoft, tal biblioteca foi usada para fazer uma pausa no programa, que por sua vez foi uma das possibilidades para realizar a gamificação das strings.
+
+para executar o codigo use 
+./meu_programa 
+onde será executado o programa.
