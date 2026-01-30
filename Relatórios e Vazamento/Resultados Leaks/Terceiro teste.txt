@@ -1,0 +1,41 @@
+
+# 0 replace_malloc               [D:\a\drmemory\drmemory\common\alloc_replace.c:2580]
+# 1 criarVetorBase  
+# 2 main            
+
+Error #4: LEAK 9 direct bytes 0x013b0f38-0x013b0f41 + 0 indirect bytes
+# 0 replace_malloc                 [D:\a\drmemory\drmemory\common\alloc_replace.c:2580]
+# 1 possiveisJogadas
+# 2 melhorJogada    
+# 3 main            
+
+Error #5: LEAK 36 direct bytes 0x013b0f68-0x013b0f8c + 0 indirect bytes
+# 0 replace_malloc               [D:\a\drmemory\drmemory\common\alloc_replace.c:2580]
+# 1 copiarVetor     
+# 2 jogada          
+# 3 melhorJogada    
+# 4 main            
+
+===========================================================================
+FINAL SUMMARY:
+
+DUPLICATE ERROR COUNTS:
+	Error #   1:      5
+	Error #   4:      3
+	Error #   5:     18
+
+SUPPRESSIONS USED:
+
+ERRORS FOUND:
+      0 unique,     0 total unaddressable access(es)
+      2 unique,     6 total uninitialized access(es)
+      0 unique,     0 total invalid heap argument(s)
+      0 unique,     0 total GDI usage error(s)
+      0 unique,     0 total handle leak(s)
+      0 unique,     0 total warning(s)
+      3 unique,    22 total,    711 byte(s) of leak(s)
+      0 unique,     0 total,      0 byte(s) of possible leak(s)
+ERRORS IGNORED:
+      7 unique,     7 total,   4692 byte(s) of still-reachable allocation(s)
+         (re-run with "-show_reachable" for details)
+Details: C:\Users\Arthur\AppData\Roaming\Dr. Memory\DrMemory-meu_programa.exe.24032.000\results.txt
