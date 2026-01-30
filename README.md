@@ -4,7 +4,7 @@
 - `README.md`: Este arquivo
 ## 🚀 Projeto: Jogo da Velha com IA
 **Descrição**: Permite o usuario jogar jogo da velha com uma maquina.
-**Repositório**: https://github.com/arthur-lucas-ccs/silva-arthur-itp-2025.2
+**Repositório**: (https://github.com/arthur-lucas-ccs/minimax-ai-cpp/)
 **Vídeo de Demonstração**: https://youtu.be/d26mgDzFvLk
 ### Principais Funcionalidades Implementadas:
 - Algoritimo minimax
