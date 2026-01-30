@@ -1,10 +1,6 @@
-# Introdução a Técnicas de Programação - Unidade 1
-**Aluno**: Arthur Lucas Costa Ciriaco da Silva
-**Matrícula**: 20250030524
-**Período**: 2025.2
 ## 📁 Estrutura do Projeto
 - `projeto/`: Projeto principal da unidade
-- `listas/`: Soluções das listas de exercícios
+- `Relatórios e Vazamentos`: Relatório de vazamento de memoria, e testes realizados
 - `README.md`: Este arquivo
 ## 🚀 Projeto: Jogo da Velha com IA
 **Descrição**: Permite o usuario jogar jogo da velha com uma maquina.
